@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Chapter 2 - Linked Lists
 
 class Node:
@@ -256,14 +255,3 @@ r.add(5)
 #t.sumLists(r, 'f').print()
 #print(t.palindrome())	
 print(t.loopDetection())
-=======
-# Chapter 2 - LinkedLists
-
-#import sys
-#ys.path.insert(0, '/../misc/')
-
-from misc.LinkedList import LinkedList
-
-t = LinkedList(1)
-t.printall()
->>>>>>> c6f98ee82f47036cbbf7fed42785742237b3c030
