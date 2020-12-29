@@ -11,13 +11,24 @@ class Stack:
 		self.top = push_val
 
 	def pop(self):
-		self.top = self.arr[-2]
-		ret = self.arr[-1]
-		self.arr = self.arr[:-1]
-		return ret
+		if(not(self.isEmpty())):
+			ret = self.top
+			self.arr = self.arr[:-1]
+			
+			if(len(self.arr) > 0):
+				self.top = self.arr[-1]
+			else:
+				self.top = None
+
+			return ret
+		else:	
+			print("Stack empty!")
 
 	def peek(self):
 		return self.top
+
+	def isEmpty(self):
+		return (len(self.arr) == 0)
 
 	def print(self):
 		print("[", end = '')
@@ -26,10 +37,26 @@ class Stack:
 
 		print(str(self.arr[-1])+"]")
 
-	# 3.5 - Sort the smallest items on top of the stack
+	# 3.5 - O(n^2) - Sort the smallest items on top of the stack
 	# Not allowed to use a temporary array, only a temporary Stack
 	def sortStack(self):
 
+		if(not(self.isEmpty())):
+			new_stack = Stack(self.pop())
+		else:
+			return 
+
+		i = 0
+		while(not(self.isEmpty())):
+			print(i)
+			pop = self.pop()				# Pop another value to start analyzing
+			while(not(new_stack.isEmpty()) and pop > new_stack.top):
+				self.push(new_stack.pop())
+
+			new_stack.push(pop)
+			i += 1
+
+		new_stack.print()
 
 class Queue:
 
@@ -95,15 +122,18 @@ class SetOfStacks:
 			i.print()
 
 
-s = SetOfStacks(5, 2)
-s.push(7)
-s.push(9)
-s.push(11)
-s.push(13)
-s.push(15)
-print(s.popAt(0))
-s.push(23)
+s = Stack(5)
+# s.push(15)
+# s.push(7)
+# s.push(13)
+# s.push(9)
+# s.push(11)
+for i in range(1000, 0, -1):
+	s.push(i)
+
 s.print()
+s.sortStack()
+
 
 
 
